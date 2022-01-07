@@ -1,0 +1,80 @@
+{
+    "name": "michaelnabil230/laravel-setting",
+    "description": "This package allows you to persists setting for Laravel projects.",
+    "keywords": [
+        "MichaelNabil230",
+        "laravel",
+        "laravel-setting",
+        "setting",
+        "json",
+        "database",
+        "db",
+        "tenant",
+        "multi-tenancy",
+        "multi-database",
+        "tenancy"
+    ],
+    "homepage": "https://github.com/michaelnabil230/laravel-setting",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Nabil",
+            "email": "michaelnabil926@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "spatie/laravel-package-tools": "^1.9.2",
+        "illuminate/contracts": "^8.73"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^5.10",
+        "nunomaduro/larastan": "^1.0",
+        "orchestra/testbench": "^6.22",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "MichaelNabil230\\LaravelSetting\\": "src",
+            "MichaelNabil230\\LaravelSetting\\Database\\Factories\\": "database/factories"
+        },
+        "files": [
+            "helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MichaelNabil230\\LaravelSetting\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest coverage"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MichaelNabil230\\LaravelSetting\\LaravelSettingServiceProvider"
+            ],
+            "aliases": {
+                "Setting": "MichaelNabil230\\LaravelSetting\\Facades\\Setting"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
