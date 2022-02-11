@@ -1,4 +1,4 @@
-# This package allows you to persists setting for Laravel projects.
+# This package allows you to persist in setting for Laravel projects and support laravel 8 & 9.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/michaelnabil230/laravel-setting.svg)](https://packagist.org/packages/michaelnabil230/laravel-setting)
 [![Total Downloads](https://img.shields.io/packagist/dt/michaelnabil230/laravel-setting.svg)](https://packagist.org/packages/michaelnabil230/laravel-setting)
