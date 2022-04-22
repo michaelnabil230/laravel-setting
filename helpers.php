@@ -11,13 +11,14 @@ if (!function_exists('setting')) {
     /**
      * Get the setting manager instance.
      *
-     * @param string|array|null $key
+     * @param mixed $key
      * @param string|null $default
      *
-     * @return \MichaelNabil230\LaravelSetting\LaravelSettingManager
+     * @return \MichaelNabil230\LaravelSetting\Stores\AbstractStore
      */
     function setting($key = null, $default = null)
     {
+        /** @var \MichaelNabil230\LaravelSetting\Stores\AbstractStore $setting */
         $setting = app('laravel-setting');
 
         if (is_array($key)) {

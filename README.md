@@ -98,6 +98,9 @@ Setting::set('foo', 'bar')->save();
 Setting::get('foo', 'default value');
 Setting::get('nested.element');
 Setting::has('foo');
+Setting::flip('foo');
+Setting::enable('foo');
+Setting::disable('foo');
 Setting::forget('foo');
 Setting::forgetAll();
 
@@ -123,6 +126,41 @@ setting()->get('foo.bar');
 setting(['foo' => 'bar'])->save();
 setting(['foo.bar' => 'baz'])->save();
 setting()->set('foo', 'bar')->save();
+
+// Flipping a boolean setting:
+
+setting()->set('notifications', true)->save();
+
+// Disable notifications.
+setting()->flip('notifications')->save();
+
+dd(setting()->get('notifications')); // Returns false.
+
+// Enable notifications.
+setting()->flip('notifications')->save();
+
+dd(setting()->get('notifications')); // Returns true.
+
+// Default flip setting:
+setting()->flip('new-key')->save();
+
+dd(setting()->get('new-key')); // Returns true.
+
+// Enabling a boolean setting:
+
+setting()->set('notifications', false)->save();
+
+setting()->enable('notifications')->save();
+
+dd(setting()->get('notifications')); // Returns true.
+
+// Disabling a boolean setting:
+
+setting()->set('notifications', true)->save();
+
+setting()->disable('notifications')->save();
+
+dd(setting()->get('notifications')); // Returns false.
 
 // Method chaining
 setting(['foo' => 'bar'])->save();

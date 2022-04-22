@@ -7,6 +7,9 @@
  * @method save()
  * @method has($key)
  * @method all()
+ * @method flip()
+ * @method enable()
+ * @method disable()
  * @method forget($key)
  * @method forgetAll()
  *

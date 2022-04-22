@@ -140,6 +140,44 @@ abstract class AbstractStore implements Store
     }
 
     /**
+     * Flips a boolean to its opposite value.
+     *
+     * This method exists for convenience.
+     *
+     * @param mixed $key
+     *
+     * @return $this
+     */
+    public function flip($key)
+    {
+        return $this->set($key, ! $this->get($key));
+    }
+
+    /**
+     * Sets the specified key to true.
+     *
+     * @param mixed $key
+     *
+     * @return $this
+     */
+    public function enable($key)
+    {
+        return $this->set($key, true);
+    }
+
+    /**
+     * Sets the specified key to false.
+     *
+     * @param mixed $key
+     *
+     * @return $this
+     */
+    public function disable($key)
+    {
+        return $this->set($key, false);
+    }
+
+    /**
      * Unset a key in the settings data.
      *
      * @param string $key

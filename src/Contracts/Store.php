@@ -70,6 +70,35 @@ interface Store
     public function all();
 
     /**
+     * Flips a boolean to its opposite value.
+     *
+     * This method exists for convenience.
+     *
+     * @param mixed $key
+     *
+     * @return $this
+     */
+    public function flip($key);
+
+    /**
+     * Sets the specified key to true.
+     *
+     * @param mixed $key
+     *
+     * @return $this
+     */
+    public function enable($key);
+
+    /**
+     * Sets the specified key to false.
+     *
+     * @param mixed $key
+     *
+     * @return $this
+     */
+    public function disable($key);
+
+    /**
      * Unset a key in the settings data.
      *
      * @param string $key

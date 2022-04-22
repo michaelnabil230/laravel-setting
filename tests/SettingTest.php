@@ -72,3 +72,33 @@ it('forget all keys', function () {
 
     setting()->forgetAll();
 });
+
+it('flip value', function () {
+    setting(['foo' => false])->save();
+
+    setting()->flip('foo')->save();
+
+    $this->assertTrue(setting('foo'));
+
+    setting()->forgetAll();
+});
+
+it('test enable', function () {
+    setting(['foo' => false])->save();
+
+    setting()->enable('foo')->save();
+
+    $this->assertTrue(setting('foo'));
+
+    setting()->forgetAll();
+});
+
+it('test disable', function () {
+    setting(['foo' => true])->save();
+
+    setting()->disable('foo')->save();
+
+    $this->assertFalse(setting('foo'));
+
+    setting()->forgetAll();
+});
