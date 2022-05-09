@@ -46,7 +46,7 @@
             "MichaelNabil230\\LaravelSetting\\Database\\Factories\\": "database/factories"
         },
         "files": [
-            "helpers.php"
+            "src/helpers.php"
         ]
     },
     "autoload-dev": {
