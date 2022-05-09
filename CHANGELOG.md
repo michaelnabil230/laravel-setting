@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-setting` will be documented in this file.
 
+## [v1.2.2](https://github.com/michaelnabil230/laravel-setting/commit/d067645b6706929afdfaafa6dd5f347ef1bd69eb) - 2022-05-09
+
+### Changed
+- Move file `helpers` to `src\helpers.php`
 
 ## [v1.2.1](https://github.com/michaelnabil230/laravel-setting/commit/e0c16dfe8a7648a436360fa91cfa5eb2b11d679e) - 2022-05-09
 
