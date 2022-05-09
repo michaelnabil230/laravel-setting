@@ -7,7 +7,7 @@
  * @package  laravel-setting
  */
 
-if (!function_exists('setting')) {
+if (! function_exists('setting')) {
     /**
      * Get the setting manager instance.
      *
@@ -23,7 +23,7 @@ if (!function_exists('setting')) {
 
         if (is_array($key)) {
             $setting->set($key);
-        } elseif (!is_null($key)) {
+        } elseif (! is_null($key)) {
             return $setting->get($key, $default);
         }
 
