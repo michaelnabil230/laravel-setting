@@ -3,6 +3,11 @@
 All notable changes to `laravel-setting` will be documented in this file.
 
 
+## [v1.2.1](https://github.com/michaelnabil230/laravel-setting/commit/e0c16dfe8a7648a436360fa91cfa5eb2b11d679e) - 2022-05-09
+
+### Fixed
+- Fix the `DataBase` mode
+
 ## [v1.2.0](https://github.com/michaelnabil230/laravel-setting/commit/00b42f635171f3063137608d378004495ba722f8) - 2022-04-22
 
 ### Added
