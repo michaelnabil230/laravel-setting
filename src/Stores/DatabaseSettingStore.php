@@ -6,7 +6,6 @@ use Exception;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Schema;
 
 /**
  *
@@ -70,24 +69,10 @@ class DatabaseSettingStore extends AbstractStore
      */
     public function postOptions($options = [])
     {
-        $this->throwAnyException($options['model']);
         $this->model = $options['model'];
         $this->cache = $this->app['cache'];
         $this->enableCache = $options['cache']['enableCache'] ?: true;
         $this->cacheTtl = $options['cache']['cacheTtl'] ?: 15;
-    }
-
-    /**
-     * Throw any Exception first.
-     *
-     * @return void
-     */
-    private function throwAnyException($model)
-    {
-        $table = app($model)->getTable();
-        if (! Schema::hasTable($table)) {
-            throw new Exception('You have to migrate first to be able to use the package');
-        }
     }
 
     /**
