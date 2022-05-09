@@ -2,7 +2,6 @@
 
 namespace MichaelNabil230\LaravelSetting\Stores;
 
-use Exception;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
