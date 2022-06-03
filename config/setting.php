@@ -37,9 +37,7 @@ return [
             'driver' => MichaelNabil230\LaravelSetting\Stores\DatabaseSettingStore::class,
             'options' => [
                 'model' => Setting::class,
-                'table' => 'settings', // name of tabele in dataBase
-                'keyColumn' => 'key', // the key of key
-                'valueColumn' => 'value', // the key of value
+                'table' => 'settings', // name of table in dataBase
                 'cache' => [
                     'enableCache' => false,
                     'cacheTtl' => 15, // TTL in seconds.
