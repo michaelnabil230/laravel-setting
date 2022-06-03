@@ -17,7 +17,7 @@ return [
     | This option controls the default settings store that gets used while
     | using this settings library.
     |
-    | Supported: "json", "database"
+    | Supported: "json", "database", "redis"
     |
     */
 
