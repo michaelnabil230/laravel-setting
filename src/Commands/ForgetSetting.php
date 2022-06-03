@@ -29,16 +29,14 @@ class ForgetSetting extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
     public function handle()
     {
         $key = $this->argument('key');
 
-        $setting = setting();
-
-        if ($setting->has($key)) {
-            if ($setting->forget($key)) {
+        if (setting()->has($key)) {
+            if (setting()->forget($key)) {
                 $this->info('Forget one or more settings successfully.');
 
                 return Command::SUCCESS;

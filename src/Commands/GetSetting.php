@@ -31,7 +31,7 @@ class GetSetting extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int
      */
     public function handle()
     {
@@ -49,7 +49,7 @@ class GetSetting extends Command
         }
 
         $settings = $this->formatSetting(Arr::dot($settings));
-        $this->print($settings);
+        return $this->print($settings);
     }
 
     /**
@@ -72,7 +72,7 @@ class GetSetting extends Command
      *
      * @param Collection $settings
      *
-     * @return void
+     * @return int
      */
     private function print($settings)
     {
