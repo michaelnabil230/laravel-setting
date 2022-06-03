@@ -2,8 +2,8 @@
 
 namespace MichaelNabil230\LaravelSetting\Stores;
 
-use Illuminate\Support\Arr;
 use Illuminate\Redis\RedisManager;
+use Illuminate\Support\Arr;
 
 /**
  *
@@ -69,7 +69,7 @@ class RedisSettingStore extends AbstractStore
     {
         $this->loadedData();
 
-        if (!Arr::has($this->data, $key)) {
+        if (! Arr::has($this->data, $key)) {
             return false;
         }
 

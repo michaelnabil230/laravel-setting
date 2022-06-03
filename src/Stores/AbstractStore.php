@@ -44,7 +44,7 @@ abstract class AbstractStore implements Store
      * Fire the post options to customize the store.
      *
      * @param  array  $options
-     * 
+     *
      * @return void
      */
     abstract protected function postOptions(array $options): void;
@@ -154,7 +154,7 @@ abstract class AbstractStore implements Store
      */
     public function flip($key): self
     {
-        return $this->set($key, !$this->get($key));
+        return $this->set($key, ! $this->get($key));
     }
 
     /**

@@ -46,7 +46,7 @@ class JsonSettingStore extends AbstractStore
      * Loaded data from the store.
      *
      * @throws RuntimeException
-     * 
+     *
      * @return void
      */
     public function loadedData(): void
@@ -65,7 +65,7 @@ class JsonSettingStore extends AbstractStore
      * Write the data into the store.
      *
      * @param array $data
-     * 
+     *
      * @return void
      */
     public function write(array $data): void
@@ -86,7 +86,7 @@ class JsonSettingStore extends AbstractStore
     {
         $this->loadedData();
 
-        if (!Arr::has($this->data, $key)) {
+        if (! Arr::has($this->data, $key)) {
             return false;
         }
 
@@ -115,7 +115,7 @@ class JsonSettingStore extends AbstractStore
      * Throw any Exception first.
      *
      * @throws InvalidArgumentException
-     * 
+     *
      * @return void
      */
     private function throwAnyException(): void
@@ -124,14 +124,14 @@ class JsonSettingStore extends AbstractStore
         $files = $this->files;
 
         // If the file does not already exist, we will attempt to create it.
-        if (!$files->exists($path)) {
+        if (! $files->exists($path)) {
             $result = $files->put($path, '{}');
             if ($result === false) {
                 throw new InvalidArgumentException("Could not write to $path.");
             }
         }
 
-        if (!$files->isWritable($path)) {
+        if (! $files->isWritable($path)) {
             throw new InvalidArgumentException("$path is not writable.");
         }
     }

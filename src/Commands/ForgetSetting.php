@@ -2,7 +2,6 @@
 
 namespace MichaelNabil230\LaravelSetting\Commands;
 
-use Error;
 use Illuminate\Console\Command;
 
 /**
@@ -41,6 +40,7 @@ class ForgetSetting extends Command
         if ($setting->has($key)) {
             if ($setting->forget($key)) {
                 $this->info('Forget one or more settings successfully.');
+
                 return Command::SUCCESS;
             }
 
@@ -50,6 +50,7 @@ class ForgetSetting extends Command
         }
 
         $this->error('No setting matches the given key.');
+
         return Command::FAILURE;
     }
 }
