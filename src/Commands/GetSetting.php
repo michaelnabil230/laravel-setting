@@ -49,6 +49,7 @@ class GetSetting extends Command
         }
 
         $settings = $this->formatSetting(Arr::dot($settings));
+
         return $this->print($settings);
     }
 
