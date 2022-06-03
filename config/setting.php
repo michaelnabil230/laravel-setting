@@ -20,6 +20,7 @@ return [
     | Supported: "json", "database"
     |
     */
+
     'default' => 'json',
 
     /*
@@ -46,6 +47,18 @@ return [
             ],
         ],
 
+        'redis' => [
+            'driver'  => MichaelNabil230\LaravelSetting\Stores\RedisSettingStore::class,
+            'options' => [
+                'client' => 'predis',
+                'default' => [
+                    'host' => env('REDIS_HOST', '127.0.0.1'),
+                    'port' => env('REDIS_PORT', 6379),
+                    'database' => env('REDIS_DB', 0),
+                ],
+            ],
+        ],
+
         'json' => [
             'driver' => MichaelNabil230\LaravelSetting\Stores\JsonSettingStore::class,
             'options' => [
@@ -54,8 +67,29 @@ return [
         ],
     ],
 
-    // Your keys
+    /*
+    |--------------------------------------------------------------------------
+    | Keys
+    |--------------------------------------------------------------------------
+    |
+    | Your keys are used to insert settings data.
+    |
+    */
+
     'keys' => [
+        // 
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Settings
+    |--------------------------------------------------------------------------
+    |
+    | Default settings are used when a setting is not found in the store.
+    |
+    */
+
+    'defaults' => [
         // 
     ],
 ];

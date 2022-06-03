@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Contracts;
+namespace MichaelNabil230\LaravelSetting\Interfaces;
 
 /**
  *
@@ -21,11 +21,11 @@ interface Store
     public function get($key, $default = null);
 
     /**
-     * Check loaded the data from the store.
+     * Loaded data from the store.
      *
      * @return void
      */
-    public function checkLoaded(): void;
+    public function loadedData(): void;
 
     /**
      * Set a specific key to a value in the settings data.

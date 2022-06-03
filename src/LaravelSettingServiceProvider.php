@@ -34,7 +34,7 @@ class LaravelSettingServiceProvider extends PackageServiceProvider
     {
         $this->app->extend(LaravelSettingManager::class, function (LaravelSettingManager $manager, $app) {
             foreach ($app['config']->get('setting.drivers', []) as $driver => $params) {
-                $manager->registerStore($driver, $params);
+                $manager->register($driver, $params);
             }
 
             return $manager;

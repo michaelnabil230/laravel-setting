@@ -31,7 +31,7 @@ class LaravelSettingManager extends Manager
      *
      * @return $this
      */
-    public function registerStore(string $driver, array $params)
+    public function register(string $driver, array $params)
     {
         return $this->extend($driver, function () use ($params) {
             return $this->container->make($params['driver'], [

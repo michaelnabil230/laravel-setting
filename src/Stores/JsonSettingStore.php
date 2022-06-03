@@ -34,7 +34,7 @@ class JsonSettingStore extends AbstractStore
      *
      * @return void
      */
-    public function postOptions($options = [])
+    public function postOptions($options = []): void
     {
         $this->path = $options['path'];
         $this->files = $this->app['files'];
@@ -43,58 +43,13 @@ class JsonSettingStore extends AbstractStore
     }
 
     /**
-     * Throw any Exception first.
+     * Loaded data from the store.
      *
+     * @throws RuntimeException
+     * 
      * @return void
      */
-    private function throwAnyException()
-    {
-        $path = $this->path;
-        $files = $this->files;
-
-        // If the file does not already exist, we will attempt to create it.
-        if (! $files->exists($path)) {
-            $result = $files->put($path, '{}');
-            if ($result === false) {
-                throw new InvalidArgumentException("Could not write to $path.");
-            }
-        }
-
-        if (! $files->isWritable($path)) {
-            throw new InvalidArgumentException("$path is not writable.");
-        }
-    }
-
-    /**
-     * Unset a key in the settings data.
-     *
-     * @param string $key
-     *
-     * @return bool
-     */
-    public function forget($key)
-    {
-        $this->checkLoaded();
-
-        if (Arr::has($this->data, $key)) {
-            Arr::forget($this->data, $key);
-
-            $contents = $this->data ? json_encode($this->data) : '{}';
-
-            $this->files->put($this->path, $contents);
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Read the data from the store.
-     *
-     * @return void
-     */
-    public function checkLoaded(): void
+    public function loadedData(): void
     {
         $contents = $this->files->get($this->path);
         $data = json_decode($contents, true);
@@ -107,11 +62,47 @@ class JsonSettingStore extends AbstractStore
     }
 
     /**
+     * Write the data into the store.
+     *
+     * @param array $data
+     * 
+     * @return void
+     */
+    public function write(array $data): void
+    {
+        $contents = $data ? json_encode($data) : '{}';
+
+        $this->files->put($this->path, $contents);
+    }
+
+    /**
+     * Unset a key in the settings data.
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    public function forget($key): bool
+    {
+        $this->loadedData();
+
+        if (!Arr::has($this->data, $key)) {
+            return false;
+        }
+
+        Arr::forget($this->data, $key);
+
+        $this->files->put($this->path, $this->data);
+
+        return true;
+    }
+
+    /**
      * Unset all keys in the settings data.
      *
      * @return bool
      */
-    public function forgetAll()
+    public function forgetAll(): bool
     {
         $contents = '{}';
 
@@ -121,14 +112,27 @@ class JsonSettingStore extends AbstractStore
     }
 
     /**
-     * Write the data into the store.
+     * Throw any Exception first.
      *
-     * @param array $data
+     * @throws InvalidArgumentException
+     * 
+     * @return void
      */
-    public function write(array $data)
+    private function throwAnyException(): void
     {
-        $contents = $data ? json_encode($data) : '{}';
+        $path = $this->path;
+        $files = $this->files;
 
-        $this->files->put($this->path, $contents);
+        // If the file does not already exist, we will attempt to create it.
+        if (!$files->exists($path)) {
+            $result = $files->put($path, '{}');
+            if ($result === false) {
+                throw new InvalidArgumentException("Could not write to $path.");
+            }
+        }
+
+        if (!$files->isWritable($path)) {
+            throw new InvalidArgumentException("$path is not writable.");
+        }
     }
 }

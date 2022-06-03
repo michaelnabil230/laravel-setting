@@ -4,7 +4,7 @@ namespace MichaelNabil230\LaravelSetting\Stores;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Arr;
-use MichaelNabil230\LaravelSetting\Contracts\Store;
+use MichaelNabil230\LaravelSetting\Interfaces\Store;
 
 /**
  *
@@ -44,8 +44,10 @@ abstract class AbstractStore implements Store
      * Fire the post options to customize the store.
      *
      * @param  array  $options
+     * 
+     * @return void
      */
-    abstract protected function postOptions(array $options);
+    abstract protected function postOptions(array $options): void;
 
     /**
      * Get a specific key from the settings data.
@@ -57,17 +59,19 @@ abstract class AbstractStore implements Store
      */
     public function get($key, $default = null): mixed
     {
-        $this->checkLoaded();
+        $this->loadedData();
+
+        $default = $default ?? config('setting.defaults.' . $key);
 
         return Arr::get($this->data, $key, $default);
     }
 
     /**
-     * Check loaded the data from the store.
+     * Loaded data from the store.
      *
      * @return void
      */
-    abstract public function checkLoaded(): void;
+    abstract public function loadedData(): void;
 
     /**
      * Set a specific key to a value in the settings data.
@@ -77,9 +81,9 @@ abstract class AbstractStore implements Store
      *
      * @return $this
      */
-    public function set($key, $value = null)
+    public function set($key, $value = null): self
     {
-        $this->checkLoaded();
+        $this->loadedData();
 
         if (is_array($key)) {
             foreach ($key as $k => $v) {
@@ -101,7 +105,7 @@ abstract class AbstractStore implements Store
      */
     public function has($key): bool
     {
-        $this->checkLoaded();
+        $this->loadedData();
 
         return Arr::has($this->data, $key);
     }
@@ -111,7 +115,7 @@ abstract class AbstractStore implements Store
      *
      * @return array
      */
-    public function save()
+    public function save(): array
     {
         $this->write($this->data);
 
@@ -125,7 +129,7 @@ abstract class AbstractStore implements Store
      *
      * @return void
      */
-    abstract public function write(array $data);
+    abstract public function write(array $data): void;
 
     /**
      * Get all settings data.
@@ -134,7 +138,7 @@ abstract class AbstractStore implements Store
      */
     public function all(): array
     {
-        $this->checkLoaded();
+        $this->loadedData();
 
         return $this->data;
     }
@@ -148,9 +152,9 @@ abstract class AbstractStore implements Store
      *
      * @return $this
      */
-    public function flip($key)
+    public function flip($key): self
     {
-        return $this->set($key, ! $this->get($key));
+        return $this->set($key, !$this->get($key));
     }
 
     /**
@@ -160,7 +164,7 @@ abstract class AbstractStore implements Store
      *
      * @return $this
      */
-    public function enable($key)
+    public function enable($key): self
     {
         return $this->set($key, true);
     }
@@ -172,7 +176,7 @@ abstract class AbstractStore implements Store
      *
      * @return $this
      */
-    public function disable($key)
+    public function disable($key): self
     {
         return $this->set($key, false);
     }
@@ -184,12 +188,12 @@ abstract class AbstractStore implements Store
      *
      * @return bool
      */
-    abstract public function forget($key);
+    abstract public function forget($key): bool;
 
     /**
      * Unset all keys in the settings data.
      *
      * @return bool
      */
-    abstract public function forgetAll();
+    abstract public function forgetAll(): bool;
 }

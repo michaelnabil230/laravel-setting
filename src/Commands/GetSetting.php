@@ -86,8 +86,10 @@ class GetSetting extends Command
             );
 
             $this->info('Values found ' . $settings->count());
-        } else {
-            $this->error('There is no values');
+            return Command::SUCCESS;
         }
+
+        $this->error('There is no values');
+        return Command::FAILURE;
     }
 }

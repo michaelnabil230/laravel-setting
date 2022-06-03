@@ -44,5 +44,7 @@ class SetOrUpdateSetting extends Command
         } else {
             $this->info('Updated ' . $key . ' setting successfully.');
         }
+
+        return Command::SUCCESS;
     }
 }

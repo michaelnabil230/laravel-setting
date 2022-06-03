@@ -66,7 +66,7 @@ class DatabaseSettingStore extends AbstractStore
      *
      * @return void
      */
-    public function postOptions($options = [])
+    public function postOptions($options = []): void
     {
         $this->model = $options['model'];
         $this->cache = $this->app['cache'];
@@ -84,7 +84,7 @@ class DatabaseSettingStore extends AbstractStore
     public function write(array $data): void
     {
         if ($this->enableCache) {
-            $this->cache->store()->forget(self::$cacheKey);
+            $this->cache->forget(self::$cacheKey);
         }
 
         $changes = $this->getChanges($data);
@@ -93,7 +93,103 @@ class DatabaseSettingStore extends AbstractStore
 
         $this->model::upsert($data, ['key', 'value']);
 
-        $this->checkLoaded();
+        $this->loadedData();
+    }
+
+    /**
+     * Loaded data from the store.
+     *
+     * @return void
+     */
+    public function loadedData(): void
+    {
+        if ($this->enableCache) {
+            $data = $this->cache->remember(self::$cacheKey, $this->cacheTtl, function () {
+                return $this->readOriginalData();
+            });
+        } else {
+            $data = $this->readOriginalData();
+        }
+
+        $this->data = Arr::undot($data);
+    }
+
+    /**
+     * Unset a key in the settings data.
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    public function forget($key): bool
+    {
+        $this->loadedData();
+
+        if (!Arr::has($this->data, $key)) {
+            return false;
+        }
+
+        $data[$key] = Arr::get($this->data, $key);
+
+        $deleted = array_keys(Arr::dot($data));
+
+        $this->syncDeleted($deleted);
+
+        $this->cache->forget(self::$cacheKey);
+
+        return true;
+    }
+
+    /**
+     * Unset all keys in the settings data.
+     *
+     * @return bool
+     */
+    public function forgetAll(): bool
+    {
+        $this->model::truncate();
+
+        $this->cache->forget(self::$cacheKey);
+
+        return true;
+    }
+
+    /**
+     * Set extra columns to be added to the rows.
+     *
+     * @param array $columns
+     *
+     * @return $this
+     */
+    public function setExtraColumns(array $columns): self
+    {
+        $this->extraColumns = $columns;
+
+        return $this;
+    }
+
+    /**
+     * Sync the deleted records.
+     *
+     * @param array $deleted
+     * 
+     * @return void
+     */
+    private function syncDeleted(array $deleted): void
+    {
+        if (!empty($deleted)) {
+            $this->model::whereIn('key', $deleted)->delete();
+        }
+    }
+
+    /**
+     * Read the original data from dataBase.
+     *
+     * @return array
+     */
+    private function readOriginalData(): array
+    {
+        return $this->model::pluck('value', 'key')->toArray();
     }
 
     /**
@@ -141,99 +237,5 @@ class DatabaseSettingStore extends AbstractStore
         }
 
         return $dbData;
-    }
-
-    /**
-     * Check if the settings data has been loaded.
-     *
-     * @return void
-     */
-    public function checkLoaded(): void
-    {
-        if ($this->enableCache) {
-            $data = $this->cache->store()->remember(self::$cacheKey, $this->cacheTtl, function () {
-                return $this->readOriginalData();
-            });
-        } else {
-            $data = $this->readOriginalData();
-        }
-
-        $this->data = Arr::undot($data);
-    }
-
-    /**
-     * Read the original data from dataBase.
-     *
-     * @return array
-     */
-    private function readOriginalData(): array
-    {
-        return $this->model::pluck('value', 'key')->toArray();
-    }
-
-    /**
-     * Unset a key in the settings data.
-     *
-     * @param string $key
-     *
-     * @return bool
-     */
-    public function forget($key)
-    {
-        $this->checkLoaded();
-
-        if (Arr::has($this->data, $key)) {
-            $data[$key] = Arr::get($this->data, $key);
-
-            $deleted = array_keys(Arr::dot($data));
-
-            $this->syncDeleted($deleted);
-
-            $this->cache->store()->forget(self::$cacheKey);
-
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Sync the deleted records.
-     *
-     * @param array $deleted
-     */
-    private function syncDeleted(array $deleted): void
-    {
-        if (! empty($deleted)) {
-            $this->model::whereIn('key', $deleted)->delete();
-        }
-    }
-
-    /**
-     * Unset all keys in the settings data.
-     *
-     * @return bool
-     */
-    public function forgetAll()
-    {
-        $this->model::truncate();
-
-        $this->cache->store()->forget(self::$cacheKey);
-
-        return true;
-    }
-
-    /**
-     * Set extra columns to be added to the rows.
-     *
-     * @param array $columns
-     *
-     * @return $this
-     */
-    public function setExtraColumns(array $columns)
-    {
-        $this->extraColumns = $columns;
-
-        return $this;
     }
 }
