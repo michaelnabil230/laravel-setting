@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Schema;
  * @license  http://opensource.org/licenses/MIT
  * @package  laravel-setting
  */
-return new class extends Migration {
-
+return new class extends Migration 
+{
     public function __construct()
     {
         $this->table = config('setting.drivers.database.options.table');
@@ -40,6 +40,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists($this->tablename);
+        Schema::dropIfExists($this->table);
     }
 };
