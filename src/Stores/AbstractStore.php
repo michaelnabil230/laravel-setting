@@ -52,8 +52,8 @@ abstract class AbstractStore implements Store
     /**
      * Get a specific key from the settings data.
      *
-     * @param string $key
-     * @param string $default
+     * @param string|int|null $key
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -76,7 +76,7 @@ abstract class AbstractStore implements Store
     /**
      * Set a specific key to a value in the settings data.
      *
-     * @param string|array $key
+     * @param mixed $key
      * @param mixed $value
      *
      * @return $this
@@ -99,7 +99,7 @@ abstract class AbstractStore implements Store
     /**
      * Determine if a key exists in the settings data.
      *
-     * @param string $key
+     * @param string|array $key
      *
      * @return bool
      */

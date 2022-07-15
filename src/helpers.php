@@ -12,7 +12,7 @@ if (! function_exists('setting')) {
      * Get the setting manager instance.
      *
      * @param mixed $key
-     * @param string|null $default
+     * @param mixed $default
      *
      * @return \MichaelNabil230\LaravelSetting\Stores\AbstractStore
      */
