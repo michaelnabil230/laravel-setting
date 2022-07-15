@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-setting` will be documented in this file.
 
+## v1.2.4 - 2022-07-15
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.1 to 1.3.3 by @dependabot in https://github.com/michaelnabil230/laravel-setting/pull/6
+
+**Full Changelog**: https://github.com/michaelnabil230/laravel-setting/compare/v1.2.3...v1.2.4
+
 ## v1.2.3 - 2022-06-03
 
 **Full Changelog**: https://github.com/michaelnabil230/laravel-setting/compare/v1.2.2...v1.2.3
