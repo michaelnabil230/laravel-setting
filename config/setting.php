@@ -3,10 +3,8 @@
 use MichaelNabil230\Setting\Models\Setting;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 return [
     /*
@@ -41,12 +39,12 @@ return [
                 'cache' => [
                     'enableCache' => false,
                     'cacheTtl' => 15, // TTL in seconds.
-                ]
+                ],
             ],
         ],
 
         'redis' => [
-            'driver'  => MichaelNabil230\Setting\Stores\RedisSettingStore::class,
+            'driver' => MichaelNabil230\Setting\Stores\RedisSettingStore::class,
             'options' => [
                 'client' => 'predis',
                 'default' => [
@@ -61,7 +59,7 @@ return [
             'driver' => MichaelNabil230\Setting\Stores\JsonSettingStore::class,
             'options' => [
                 'path' => storage_path('settings.json'),
-            ]
+            ],
         ],
     ],
 
@@ -75,7 +73,7 @@ return [
     */
 
     'keys' => [
-        // 
+        //
     ],
 
     /*
@@ -88,6 +86,6 @@ return [
     */
 
     'defaults' => [
-        // 
+        //
     ],
 ];

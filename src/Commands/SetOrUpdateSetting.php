@@ -6,10 +6,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 class SetOrUpdateSetting extends Command
 {
@@ -40,9 +38,9 @@ class SetOrUpdateSetting extends Command
         $settings = setting()->set($key, $value)->save();
 
         if (Arr::has($settings, $key)) {
-            $this->info('Insert ' . $key . ' into a new setting successfully.');
+            $this->info('Insert '.$key.' into a new setting successfully.');
         } else {
-            $this->info('Updated ' . $key . ' setting successfully.');
+            $this->info('Updated '.$key.' setting successfully.');
         }
 
         return Command::SUCCESS;

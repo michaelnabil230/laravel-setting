@@ -7,10 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 class DatabaseSettingStore extends AbstractStore
 {
@@ -62,8 +60,7 @@ class DatabaseSettingStore extends AbstractStore
     /**
      * SettingStore constructor.
      *
-     * @param array $options
-     *
+     * @param  array  $options
      * @return void
      */
     public function postOptions($options = []): void
@@ -77,8 +74,7 @@ class DatabaseSettingStore extends AbstractStore
     /**
      * Write the data into the store.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return void
      */
     public function write(array $data): void
@@ -117,15 +113,14 @@ class DatabaseSettingStore extends AbstractStore
     /**
      * Unset a key in the settings data.
      *
-     * @param string $key
-     *
+     * @param  string  $key
      * @return bool
      */
     public function forget($key): bool
     {
         $this->loadedData();
 
-        if (!Arr::has($this->data, $key)) {
+        if (! Arr::has($this->data, $key)) {
             return false;
         }
 
@@ -157,8 +152,7 @@ class DatabaseSettingStore extends AbstractStore
     /**
      * Set extra columns to be added to the rows.
      *
-     * @param array $columns
-     *
+     * @param  array  $columns
      * @return $this
      */
     public function setExtraColumns(array $columns): self
@@ -171,13 +165,12 @@ class DatabaseSettingStore extends AbstractStore
     /**
      * Sync the deleted records.
      *
-     * @param array $deleted
-     *
+     * @param  array  $deleted
      * @return void
      */
     private function syncDeleted(array $deleted): void
     {
-        if (!empty($deleted)) {
+        if (! empty($deleted)) {
             $this->model::whereIn('key', $deleted)->delete();
         }
     }
@@ -195,8 +188,7 @@ class DatabaseSettingStore extends AbstractStore
     /**
      * Get the changed settings data.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return array
      */
     private function getChanges(array $data): array
@@ -220,8 +212,7 @@ class DatabaseSettingStore extends AbstractStore
      * Transforms settings data into an array ready to be inserted into the database.
      * Call array_dot on a multidimensional array before passing it into this method!
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return array
      */
     private function prepareData(array $data): array

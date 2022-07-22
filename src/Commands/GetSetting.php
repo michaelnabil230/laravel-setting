@@ -7,10 +7,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 class GetSetting extends Command
 {
@@ -56,8 +54,7 @@ class GetSetting extends Command
     /**
      * Format settings befor print.
      *
-     * @param array $settings
-     *
+     * @param  array  $settings
      * @return Collection
      */
     private function formatSetting($settings)
@@ -71,8 +68,7 @@ class GetSetting extends Command
     /**
      * Print the settings in screen.
      *
-     * @param Collection $settings
-     *
+     * @param  Collection  $settings
      * @return int
      */
     private function print($settings)
@@ -86,7 +82,7 @@ class GetSetting extends Command
                 $settings
             );
 
-            $this->info('Values found ' . $settings->count());
+            $this->info('Values found '.$settings->count());
 
             return Command::SUCCESS;
         }

@@ -6,10 +6,8 @@ use Illuminate\Redis\RedisManager;
 use Illuminate\Support\Arr;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 class RedisSettingStore extends AbstractStore
 {
@@ -21,8 +19,7 @@ class RedisSettingStore extends AbstractStore
     protected $manager;
 
     /**
-     * @param array $options
-     *
+     * @param  array  $options
      * @return void
      */
     protected function postOptions(array $options): void
@@ -49,8 +46,7 @@ class RedisSettingStore extends AbstractStore
     /**
      * Write the data into the store.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return void
      */
     public function write(array $data): void
@@ -61,15 +57,14 @@ class RedisSettingStore extends AbstractStore
     /**
      * Unset a key in the settings data.
      *
-     * @param string $key
-     *
+     * @param  string  $key
      * @return bool
      */
     public function forget($key): bool
     {
         $this->loadedData();
 
-        if (!Arr::has($this->data, $key)) {
+        if (! Arr::has($this->data, $key)) {
             return false;
         }
 
@@ -96,7 +91,6 @@ class RedisSettingStore extends AbstractStore
      * Get a Redis connection by name.
      *
      * @param  string|null  $name
-     *
      * @return \Illuminate\Redis\Connections\Connection
      */
     private function connection($name = null)
@@ -108,8 +102,7 @@ class RedisSettingStore extends AbstractStore
      * Run a command against the Redis database.
      *
      * @param  string  $method
-     * @param  array   $parameters
-     *
+     * @param  array  $parameters
      * @return mixed
      */
     private function command(string $method, array $parameters = [])

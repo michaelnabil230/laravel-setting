@@ -7,10 +7,8 @@ use Illuminate\Support\Arr;
 use MichaelNabil230\Setting\Interfaces\Store;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 abstract class AbstractStore implements Store
 {
@@ -31,8 +29,8 @@ abstract class AbstractStore implements Store
     /**
      * AbstractStore constructor.
      *
-     * @param  Application $app
-     * @param  array $options
+     * @param  Application  $app
+     * @param  array  $options
      */
     public function __construct(Application $app, array $options = [])
     {
@@ -44,7 +42,6 @@ abstract class AbstractStore implements Store
      * Fire the post options to customize the store.
      *
      * @param  array  $options
-     *
      * @return void
      */
     abstract protected function postOptions(array $options): void;
@@ -52,16 +49,15 @@ abstract class AbstractStore implements Store
     /**
      * Get a specific key from the settings data.
      *
-     * @param string|int|null $key
-     * @param mixed $default
-     *
+     * @param  string|int|null  $key
+     * @param  mixed  $default
      * @return mixed
      */
     public function get($key, $default = null): mixed
     {
         $this->loadedData();
 
-        $default = $default ?? config('setting.defaults.' . $key);
+        $default = $default ?? config('setting.defaults.'.$key);
 
         return Arr::get($this->data, $key, $default);
     }
@@ -76,9 +72,8 @@ abstract class AbstractStore implements Store
     /**
      * Set a specific key to a value in the settings data.
      *
-     * @param mixed $key
-     * @param mixed $value
-     *
+     * @param  mixed  $key
+     * @param  mixed  $value
      * @return $this
      */
     public function set($key, $value = null): self
@@ -99,8 +94,7 @@ abstract class AbstractStore implements Store
     /**
      * Determine if a key exists in the settings data.
      *
-     * @param string|array $key
-     *
+     * @param  string|array  $key
      * @return bool
      */
     public function has($key): bool
@@ -125,8 +119,7 @@ abstract class AbstractStore implements Store
     /**
      * Write the data into the store.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return void
      */
     abstract public function write(array $data): void;
@@ -148,20 +141,18 @@ abstract class AbstractStore implements Store
      *
      * This method exists for convenience.
      *
-     * @param mixed $key
-     *
+     * @param  mixed  $key
      * @return $this
      */
     public function flip($key): self
     {
-        return $this->set($key, !$this->get($key));
+        return $this->set($key, ! $this->get($key));
     }
 
     /**
      * Sets the specified key to true.
      *
-     * @param mixed $key
-     *
+     * @param  mixed  $key
      * @return $this
      */
     public function enable($key): self
@@ -172,8 +163,7 @@ abstract class AbstractStore implements Store
     /**
      * Sets the specified key to false.
      *
-     * @param mixed $key
-     *
+     * @param  mixed  $key
      * @return $this
      */
     public function disable($key): self
@@ -184,8 +174,7 @@ abstract class AbstractStore implements Store
     /**
      * Unset a key in the settings data.
      *
-     * @param string $key
-     *
+     * @param  string  $key
      * @return bool
      */
     abstract public function forget($key): bool;
