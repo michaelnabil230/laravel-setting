@@ -1,12 +1,12 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Interfaces;
+namespace MichaelNabil230\Setting\Interfaces;
 
 /**
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 interface Store
 {

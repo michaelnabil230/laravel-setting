@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 return new class extends Migration 
 {

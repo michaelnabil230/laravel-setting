@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Models;
+namespace MichaelNabil230\Setting\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 class Setting extends Model
 {

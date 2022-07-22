@@ -31,13 +31,13 @@ php artisan vendor:publish --tag="setting-config"
 This is the contents of the published config file:
 
 ```php
-use MichaelNabil230\LaravelSetting\Models\Setting;
+use MichaelNabil230\Setting\Models\Setting;
 
 /**
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 return [
     /*
@@ -65,7 +65,7 @@ return [
 
     'drivers' => [
         'database' => [
-            'driver' => MichaelNabil230\LaravelSetting\Stores\DatabaseSettingStore::class,
+            'driver' => MichaelNabil230\Setting\Stores\DatabaseSettingStore::class,
             'options' => [
                 'model' => Setting::class,
                 'table' => 'settings', // name of table in dataBase
@@ -77,7 +77,7 @@ return [
         ],
 
         'redis' => [
-            'driver'  => MichaelNabil230\LaravelSetting\Stores\RedisSettingStore::class,
+            'driver'  => MichaelNabil230\Setting\Stores\RedisSettingStore::class,
             'options' => [
                 'client' => 'predis',
                 'default' => [
@@ -89,7 +89,7 @@ return [
         ],
 
         'json' => [
-            'driver' => MichaelNabil230\LaravelSetting\Stores\JsonSettingStore::class,
+            'driver' => MichaelNabil230\Setting\Stores\JsonSettingStore::class,
             'options' => [
                 'path' => storage_path('settings.json'),
             ]
@@ -128,7 +128,7 @@ You can either access the setting store via its facade
 ```php
 <?php
 
-use MichaelNabil230\LaravelSetting\Facades\Setting;
+use MichaelNabil230\Setting\Facades\Setting;
 
 Setting::set('foo', 'bar')->save();
 Setting::get('foo', 'default value');
@@ -282,7 +282,7 @@ return [
     
     'drivers' => [
         'database' => [
-            'driver' => MichaelNabil230\LaravelSetting\Stores\DatabaseSettingStore::class,
+            'driver' => MichaelNabil230\Setting\Stores\DatabaseSettingStore::class,
             'options' => [
                 'model' => Setting::class,
                 'table' => 'settings', // name of table in dataBase
@@ -294,7 +294,7 @@ return [
         ],
 
         'redis' => [
-            'driver'  => MichaelNabil230\LaravelSetting\Stores\RedisSettingStore::class,
+            'driver'  => MichaelNabil230\Setting\Stores\RedisSettingStore::class,
             'options' => [
                 'client' => 'predis',
                 'default' => [
@@ -306,7 +306,7 @@ return [
         ],
 
         'json' => [
-            'driver' => MichaelNabil230\LaravelSetting\Stores\JsonSettingStore::class,
+            'driver' => MichaelNabil230\Setting\Stores\JsonSettingStore::class,
             'options' => [
                 'path' => storage_path('settings.json'),
             ]
@@ -339,7 +339,7 @@ The store config is structured like this:
 
 namespace App\Settings;
 
-use MichaelNabil230\LaravelSetting\Contracts\Store;
+use MichaelNabil230\Setting\Contracts\Store;
 
 class CustomStore implements Store
 {
@@ -361,7 +361,7 @@ return [
 ];
 ```
 
-If you used the abstract `MichaelNabil230\LaravelSetting\Contracts\Store` class, you can pass a `options` array
+If you used the abstract `MichaelNabil230\Setting\Contracts\Store` class, you can pass a `options` array
 like credential keys, path ...
 
 ```php
@@ -393,7 +393,7 @@ Then add this to your `AppServiceProvider::boot()` method:
 
 ```php
 Event::listen(TenancyBootstrapped::class, function (TenancyBootstrapped $event) {
-    \MichaelNabil230\LaravelSetting\Stores\DatabaseSettingStore::$cacheKey = 'setting.cache.tenant.' . $event->tenancy->tenant->id;
+    \MichaelNabil230\Setting\Stores\DatabaseSettingStore::$cacheKey = 'setting.cache.tenant.' . $event->tenancy->tenant->id;
 });
 ```
 

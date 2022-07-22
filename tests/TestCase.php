@@ -1,9 +1,9 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Tests;
+namespace MichaelNabil230\Setting\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use MichaelNabil230\LaravelSetting\LaravelSettingServiceProvider;
+use MichaelNabil230\Setting\SettingServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'MichaelNabil230\\LaravelSetting\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'MichaelNabil230\\Setting\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            LaravelSettingServiceProvider::class,
+            SettingServiceProvider::class,
         ];
     }
 

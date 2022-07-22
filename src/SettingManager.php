@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting;
+namespace MichaelNabil230\Setting;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Manager;
@@ -9,9 +9,9 @@ use Illuminate\Support\Manager;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
-class LaravelSettingManager extends Manager
+class SettingManager extends Manager
 {
     /**
      * Get the default driver name.

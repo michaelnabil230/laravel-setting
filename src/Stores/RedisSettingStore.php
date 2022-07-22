@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Stores;
+namespace MichaelNabil230\Setting\Stores;
 
 use Illuminate\Redis\RedisManager;
 use Illuminate\Support\Arr;
@@ -9,7 +9,7 @@ use Illuminate\Support\Arr;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 class RedisSettingStore extends AbstractStore
 {
@@ -69,7 +69,7 @@ class RedisSettingStore extends AbstractStore
     {
         $this->loadedData();
 
-        if (! Arr::has($this->data, $key)) {
+        if (!Arr::has($this->data, $key)) {
             return false;
         }
 

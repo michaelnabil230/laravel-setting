@@ -29,10 +29,10 @@
         "illuminate/contracts": "^8.73|^9.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.8",
-        "nunomaduro/collision": "^5.10|^6.0",
-        "nunomaduro/larastan": "^1.0",
-        "orchestra/testbench": "^6.22|^7.0",
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.1",
         "phpstan/extension-installer": "^1.1",
@@ -42,8 +42,8 @@
     },
     "autoload": {
         "psr-4": {
-            "MichaelNabil230\\LaravelSetting\\": "src",
-            "MichaelNabil230\\LaravelSetting\\Database\\Factories\\": "database/factories"
+            "MichaelNabil230\\Setting\\": "src",
+            "MichaelNabil230\\Setting\\Database\\Factories\\": "database/factories"
         },
         "files": [
             "src/helpers.php"
@@ -51,7 +51,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "MichaelNabil230\\LaravelSetting\\Tests\\": "tests"
+            "MichaelNabil230\\Setting\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -71,10 +71,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MichaelNabil230\\LaravelSetting\\LaravelSettingServiceProvider"
+                "MichaelNabil230\\Setting\\SettingServiceProvider"
             ],
             "aliases": {
-                "Setting": "MichaelNabil230\\LaravelSetting\\Facades\\Setting"
+                "Setting": "MichaelNabil230\\Setting\\Facades\\Setting"
             }
         }
     },

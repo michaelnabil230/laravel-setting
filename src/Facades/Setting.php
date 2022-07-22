@@ -13,10 +13,10 @@
  * @method forget($key)
  * @method forgetAll()
  *
- * @see \MichaelNabil230\LaravelSetting\LaravelSettingManager
+ * @see \MichaelNabil230\Setting\SettingManager
  */
 
-namespace MichaelNabil230\LaravelSetting\Facades;
+namespace MichaelNabil230\Setting\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -24,12 +24,12 @@ use Illuminate\Support\Facades\Facade;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 class Setting extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'laravel-setting';
+        return 'setting';
     }
 }

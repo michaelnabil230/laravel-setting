@@ -1,16 +1,16 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Stores;
+namespace MichaelNabil230\Setting\Stores;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Arr;
-use MichaelNabil230\LaravelSetting\Interfaces\Store;
+use MichaelNabil230\Setting\Interfaces\Store;
 
 /**
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 abstract class AbstractStore implements Store
 {
@@ -154,7 +154,7 @@ abstract class AbstractStore implements Store
      */
     public function flip($key): self
     {
-        return $this->set($key, ! $this->get($key));
+        return $this->set($key, !$this->get($key));
     }
 
     /**

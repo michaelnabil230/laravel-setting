@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Stores;
+namespace MichaelNabil230\Setting\Stores;
 
 use Illuminate\Cache\CacheManager;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,7 @@ use Illuminate\Support\Arr;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 class DatabaseSettingStore extends AbstractStore
 {
@@ -125,7 +125,7 @@ class DatabaseSettingStore extends AbstractStore
     {
         $this->loadedData();
 
-        if (! Arr::has($this->data, $key)) {
+        if (!Arr::has($this->data, $key)) {
             return false;
         }
 
@@ -177,7 +177,7 @@ class DatabaseSettingStore extends AbstractStore
      */
     private function syncDeleted(array $deleted): void
     {
-        if (! empty($deleted)) {
+        if (!empty($deleted)) {
             $this->model::whereIn('key', $deleted)->delete();
         }
     }

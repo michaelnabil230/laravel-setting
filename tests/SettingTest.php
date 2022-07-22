@@ -1,9 +1,9 @@
 <?php
 
-use MichaelNabil230\LaravelSetting\LaravelSettingManager;
+use MichaelNabil230\Setting\SettingManager;
 
 it('if the driver is equal to default', function () {
-    $manager = app(LaravelSettingManager::class);
+    $manager = app(SettingManager::class);
 
     static::assertSame(config('setting.default'), $manager->getDefaultDriver());
 });
@@ -11,7 +11,7 @@ it('if the driver is equal to default', function () {
 it('if the driver is not equal to default', function () {
     config()->set('setting.default', 'another-driver');
 
-    $manager = app(LaravelSettingManager::class);
+    $manager = app(SettingManager::class);
 
     $this->assertNotSame('json', $manager->getDefaultDriver());
 });

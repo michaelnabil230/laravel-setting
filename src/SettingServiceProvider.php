@@ -1,11 +1,11 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting;
+namespace MichaelNabil230\Setting;
 
 use Illuminate\Support\Facades\Blade;
-use MichaelNabil230\LaravelSetting\Commands\ForgetSetting;
-use MichaelNabil230\LaravelSetting\Commands\GetSetting;
-use MichaelNabil230\LaravelSetting\Commands\SetOrUpdateSetting;
+use MichaelNabil230\Setting\Commands\ForgetSetting;
+use MichaelNabil230\Setting\Commands\GetSetting;
+use MichaelNabil230\Setting\Commands\SetOrUpdateSetting;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -13,14 +13,14 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
-class LaravelSettingServiceProvider extends PackageServiceProvider
+class SettingServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('laravel-setting')
+            ->name('setting')
             ->hasConfigFile()
             ->hasMigration('create_settings_table')
             ->hasCommands([
@@ -32,7 +32,7 @@ class LaravelSettingServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
-        $this->app->extend(LaravelSettingManager::class, function (LaravelSettingManager $manager, $app) {
+        $this->app->extend(SettingManager::class, function (SettingManager $manager, $app) {
             foreach ($app['config']->get('setting.drivers', []) as $driver => $params) {
                 $manager->register($driver, $params);
             }
@@ -40,8 +40,8 @@ class LaravelSettingServiceProvider extends PackageServiceProvider
             return $manager;
         });
 
-        $this->app->bind('laravel-setting', function ($app) {
-            return $app->make(LaravelSettingManager::class)->driver();
+        $this->app->bind('setting', function ($app) {
+            return $app->make(SettingManager::class)->driver();
         });
     }
 

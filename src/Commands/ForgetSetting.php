@@ -1,6 +1,6 @@
 <?php
 
-namespace MichaelNabil230\LaravelSetting\Commands;
+namespace MichaelNabil230\Setting\Commands;
 
 use Illuminate\Console\Command;
 
@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
  *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  laravel-setting
+ * @package  setting
  */
 class ForgetSetting extends Command
 {
