@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Facade;
  *
  * @see \MichaelNabil230\Setting\SettingManager
  */
-
 class Setting extends Facade
 {
     protected static function getFacadeAccessor()

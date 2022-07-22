@@ -116,7 +116,7 @@ class DatabaseSettingStore extends AbstractStore
     {
         $this->loadedData();
 
-        if (!Arr::has($this->data, $key)) {
+        if (! Arr::has($this->data, $key)) {
             return false;
         }
 
@@ -166,7 +166,7 @@ class DatabaseSettingStore extends AbstractStore
      */
     private function syncDeleted(array $deleted): void
     {
-        if (!empty($deleted)) {
+        if (! empty($deleted)) {
             $this->model::whereIn('key', $deleted)->delete();
         }
     }

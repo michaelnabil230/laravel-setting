@@ -78,7 +78,7 @@ class GetSetting extends Command
                 $settings
             );
 
-            $this->info('Values found ' . $settings->count());
+            $this->info('Values found '.$settings->count());
 
             return Command::SUCCESS;
         }

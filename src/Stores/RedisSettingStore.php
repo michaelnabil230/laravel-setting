@@ -60,7 +60,7 @@ class RedisSettingStore extends AbstractStore
     {
         $this->loadedData();
 
-        if (!Arr::has($this->data, $key)) {
+        if (! Arr::has($this->data, $key)) {
             return false;
         }
 
