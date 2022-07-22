@@ -2,6 +2,18 @@
 
 All notable changes to `setting` will be documented in this file.
 
+## v1.2.5 - 2022-07-22
+
+### Added
+
+- Add  workflow of `laravel/pint`
+
+### Changed
+
+- Change the name of all classes in the package from `LaravelSetting` to `Setting`
+
+**Full Changelog**: https://github.com/michaelnabil230/laravel-setting/compare/v1.2.4...v1.2.5
+
 ## v1.2.4 - 2022-07-15
 
 ### What's Changed
