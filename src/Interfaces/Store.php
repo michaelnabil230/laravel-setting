@@ -3,19 +3,16 @@
 namespace MichaelNabil230\Setting\Interfaces;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 interface Store
 {
     /**
      * Get a specific key from the settings data.
      *
-     * @param string $key
-     * @param string $default
-     *
+     * @param  string  $key
+     * @param  string  $default
      * @return mixed
      */
     public function get($key, $default = null);
@@ -30,9 +27,8 @@ interface Store
     /**
      * Set a specific key to a value in the settings data.
      *
-     * @param string|array $key
-     * @param mixed $value
-     *
+     * @param  string|array  $key
+     * @param  mixed  $value
      * @return $this
      */
     public function set($key, $value = null);
@@ -40,8 +36,7 @@ interface Store
     /**
      * Determine if a key exists in the settings data.
      *
-     * @param string $key
-     *
+     * @param  string  $key
      * @return bool
      */
     public function has($key);
@@ -56,8 +51,7 @@ interface Store
     /**
      * Write the data into the store.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return void
      */
     public function write(array $data);
@@ -74,8 +68,7 @@ interface Store
      *
      * This method exists for convenience.
      *
-     * @param mixed $key
-     *
+     * @param  mixed  $key
      * @return $this
      */
     public function flip($key);
@@ -83,8 +76,7 @@ interface Store
     /**
      * Sets the specified key to true.
      *
-     * @param mixed $key
-     *
+     * @param  mixed  $key
      * @return $this
      */
     public function enable($key);
@@ -92,8 +84,7 @@ interface Store
     /**
      * Sets the specified key to false.
      *
-     * @param mixed $key
-     *
+     * @param  mixed  $key
      * @return $this
      */
     public function disable($key);
@@ -101,8 +92,7 @@ interface Store
     /**
      * Unset a key in the settings data.
      *
-     * @param string $key
-     *
+     * @param  string  $key
      * @return bool
      */
     public function forget($key);

@@ -8,10 +8,8 @@ use InvalidArgumentException;
 use RuntimeException;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 class JsonSettingStore extends AbstractStore
 {
@@ -30,8 +28,7 @@ class JsonSettingStore extends AbstractStore
     protected $files = null;
 
     /**
-     * @param array $options
-     *
+     * @param  array  $options
      * @return void
      */
     public function postOptions($options = []): void
@@ -45,9 +42,9 @@ class JsonSettingStore extends AbstractStore
     /**
      * Loaded data from the store.
      *
-     * @throws RuntimeException
-     *
      * @return void
+     *
+     * @throws RuntimeException
      */
     public function loadedData(): void
     {
@@ -64,8 +61,7 @@ class JsonSettingStore extends AbstractStore
     /**
      * Write the data into the store.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return void
      */
     public function write(array $data): void
@@ -78,15 +74,14 @@ class JsonSettingStore extends AbstractStore
     /**
      * Unset a key in the settings data.
      *
-     * @param string $key
-     *
+     * @param  string  $key
      * @return bool
      */
     public function forget($key): bool
     {
         $this->loadedData();
 
-        if (!Arr::has($this->data, $key)) {
+        if (! Arr::has($this->data, $key)) {
             return false;
         }
 
@@ -114,9 +109,9 @@ class JsonSettingStore extends AbstractStore
     /**
      * Throw any Exception first.
      *
-     * @throws InvalidArgumentException
-     *
      * @return void
+     *
+     * @throws InvalidArgumentException
      */
     private function throwAnyException(): void
     {
@@ -124,14 +119,14 @@ class JsonSettingStore extends AbstractStore
         $files = $this->files;
 
         // If the file does not already exist, we will attempt to create it.
-        if (!$files->exists($path)) {
+        if (! $files->exists($path)) {
             $result = $files->put($path, '{}');
             if ($result === false) {
                 throw new InvalidArgumentException("Could not write to $path.");
             }
         }
 
-        if (!$files->isWritable($path)) {
+        if (! $files->isWritable($path)) {
             throw new InvalidArgumentException("$path is not writable.");
         }
     }

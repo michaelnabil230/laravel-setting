@@ -6,10 +6,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Manager;
 
 /**
- *
  * @author   Michael Nabil <michaelnabil926@gmail.com>
  * @license  http://opensource.org/licenses/MIT
- * @package  setting
  */
 class SettingManager extends Manager
 {
@@ -26,9 +24,8 @@ class SettingManager extends Manager
     /**
      * Register a new store.
      *
-     * @param string $driver
-     * @param array $params
-     *
+     * @param  string  $driver
+     * @param  array  $params
      * @return $this
      */
     public function register(string $driver, array $params)

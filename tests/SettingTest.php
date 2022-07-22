@@ -64,7 +64,6 @@ it('doesn\'t forget key', function () {
     setting()->forgetAll();
 });
 
-
 it('forget all keys', function () {
     setting(['foo' => 'bar'])->save();
 
