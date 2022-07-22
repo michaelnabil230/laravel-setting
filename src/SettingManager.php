@@ -5,10 +5,6 @@ namespace MichaelNabil230\Setting;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Manager;
 
-/**
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- */
 class SettingManager extends Manager
 {
     /**

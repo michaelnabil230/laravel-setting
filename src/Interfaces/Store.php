@@ -2,10 +2,6 @@
 
 namespace MichaelNabil230\Setting\Interfaces;
 
-/**
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- */
 interface Store
 {
     /**

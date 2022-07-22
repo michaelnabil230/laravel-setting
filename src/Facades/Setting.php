@@ -1,5 +1,9 @@
 <?php
 
+namespace MichaelNabil230\Setting\Facades;
+
+use Illuminate\Support\Facades\Facade;
+
 /**
  * @method get($key, $default = null)
  * @method set($key, $value = null)
@@ -15,14 +19,6 @@
  * @see \MichaelNabil230\Setting\SettingManager
  */
 
-namespace MichaelNabil230\Setting\Facades;
-
-use Illuminate\Support\Facades\Facade;
-
-/**
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- */
 class Setting extends Facade
 {
     protected static function getFacadeAccessor()

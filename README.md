@@ -33,12 +33,6 @@ This is the contents of the published config file:
 ```php
 use MichaelNabil230\Setting\Models\Setting;
 
-/**
- *
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- * @package  setting
- */
 return [
     /*
     |--------------------------------------------------------------------------

@@ -9,10 +9,6 @@ use MichaelNabil230\Setting\Commands\SetOrUpdateSetting;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-/**
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- */
 class SettingServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void

@@ -6,10 +6,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Arr;
 use MichaelNabil230\Setting\Interfaces\Store;
 
-/**
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- */
 abstract class AbstractStore implements Store
 {
     /**
@@ -57,7 +53,7 @@ abstract class AbstractStore implements Store
     {
         $this->loadedData();
 
-        $default = $default ?? config('setting.defaults.'.$key);
+        $default = $default ?? config('setting.defaults.' . $key);
 
         return Arr::get($this->data, $key, $default);
     }
@@ -146,7 +142,7 @@ abstract class AbstractStore implements Store
      */
     public function flip($key): self
     {
-        return $this->set($key, ! $this->get($key));
+        return $this->set($key, !$this->get($key));
     }
 
     /**

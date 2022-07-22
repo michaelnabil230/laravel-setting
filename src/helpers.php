@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- */
 if (! function_exists('setting')) {
     /**
      * Get the setting manager instance.

@@ -7,10 +7,6 @@ use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use RuntimeException;
 
-/**
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- */
 class JsonSettingStore extends AbstractStore
 {
     /**
@@ -81,7 +77,7 @@ class JsonSettingStore extends AbstractStore
     {
         $this->loadedData();
 
-        if (! Arr::has($this->data, $key)) {
+        if (!Arr::has($this->data, $key)) {
             return false;
         }
 
@@ -119,14 +115,14 @@ class JsonSettingStore extends AbstractStore
         $files = $this->files;
 
         // If the file does not already exist, we will attempt to create it.
-        if (! $files->exists($path)) {
+        if (!$files->exists($path)) {
             $result = $files->put($path, '{}');
             if ($result === false) {
                 throw new InvalidArgumentException("Could not write to $path.");
             }
         }
 
-        if (! $files->isWritable($path)) {
+        if (!$files->isWritable($path)) {
             throw new InvalidArgumentException("$path is not writable.");
         }
     }

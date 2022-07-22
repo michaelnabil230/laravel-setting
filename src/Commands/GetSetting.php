@@ -6,10 +6,6 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
-/**
- * @author   Michael Nabil <michaelnabil926@gmail.com>
- * @license  http://opensource.org/licenses/MIT
- */
 class GetSetting extends Command
 {
     /**
@@ -82,7 +78,7 @@ class GetSetting extends Command
                 $settings
             );
 
-            $this->info('Values found '.$settings->count());
+            $this->info('Values found ' . $settings->count());
 
             return Command::SUCCESS;
         }
