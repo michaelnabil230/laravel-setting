@@ -4,21 +4,23 @@ if (! function_exists('setting')) {
     /**
      * Get the setting manager instance.
      *
-     * @param  mixed  $key
+     * @param  array|string|null  $key
      * @param  mixed  $default
      * @return \MichaelNabil230\Setting\Stores\AbstractStore
      */
     function setting($key = null, $default = null)
     {
-        /** @var \MichaelNabil230\Setting\Stores\AbstractStore $setting */
-        $setting = app('setting');
+        /** @var \MichaelNabil230\Setting\SettingManager $instants */
+        $instants = app('setting');
 
-        if (is_array($key)) {
-            $setting->set($key);
-        } elseif (! is_null($key)) {
-            return $setting->get($key, $default);
+        if (is_null($key)) {
+            return $instants;
         }
 
-        return $setting;
+        if (is_array($key)) {
+            return $instants->set($key);
+        }
+
+        return $instants->get($key, $default);
     }
 }

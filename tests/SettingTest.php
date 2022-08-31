@@ -1,19 +1,19 @@
 <?php
 
-use MichaelNabil230\Setting\SettingManager;
-
 it('if the driver is equal to default', function () {
-    $manager = app(SettingManager::class);
+    /** @var \MichaelNabil230\Setting\SettingManager $instants */
+    $instants = setting();
 
-    static::assertSame(config('setting.default'), $manager->getDefaultDriver());
+    static::assertSame(config('setting.default'), $instants->getDefaultDriver());
 });
 
 it('if the driver is not equal to default', function () {
     config()->set('setting.default', 'another-driver');
 
-    $manager = app(SettingManager::class);
+    /** @var \MichaelNabil230\Setting\SettingManager $instants */
+    $instants = setting();
 
-    $this->assertNotSame('json', $manager->getDefaultDriver());
+    $this->assertNotSame('json', $instants->getDefaultDriver());
 });
 
 it('value the same', function () {

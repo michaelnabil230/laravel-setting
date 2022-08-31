@@ -5,6 +5,9 @@ namespace MichaelNabil230\Setting;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Manager;
 
+/**
+ * @mixin \MichaelNabil230\Setting\Interfaces\Store
+ */
 class SettingManager extends Manager
 {
     /**

@@ -2,17 +2,30 @@
 
 namespace MichaelNabil230\Setting\Stores;
 
-use Illuminate\Redis\RedisManager;
 use Illuminate\Support\Arr;
 
 class RedisSettingStore extends AbstractStore
 {
     /**
-     * The redis manager.
+     * The Redis instance.
      *
-     * @var RedisManager
+     * @var \Illuminate\Contracts\Redis\Factory
      */
-    protected $manager;
+    protected $redis;
+
+    /**
+     * The Redis key prefix.
+     *
+     * @var string
+     */
+    protected $prefix = '';
+
+    /**
+     * The Redis connection to use for broadcasting.
+     *
+     * @var ?string
+     */
+    protected $connection = null;
 
     /**
      * @param  array  $options
@@ -20,11 +33,9 @@ class RedisSettingStore extends AbstractStore
      */
     protected function postOptions(array $options): void
     {
-        $this->manager = new RedisManager(
-            $this->app,
-            Arr::pull($options, 'client', 'predis'),
-            $options
-        );
+        $this->redis = $this->app->make('redis');
+        $this->prefix = Arr::get($options, 'prefix', '');
+        $this->connection = Arr::get($options, 'connection');
     }
 
     /**
@@ -34,7 +45,7 @@ class RedisSettingStore extends AbstractStore
      */
     public function loadedData(): void
     {
-        $data = $this->command('get', ['settings']);
+        $data = $this->command('get', [$this->prefix.'settings']);
 
         $this->data = is_string($data) ? json_decode($data, true) : [];
     }
@@ -47,7 +58,7 @@ class RedisSettingStore extends AbstractStore
      */
     public function write(array $data): void
     {
-        $this->command('set', ['settings', json_encode($data)]);
+        $this->command('set', [$this->prefix.'settings', json_encode($data)]);
     }
 
     /**
@@ -86,12 +97,11 @@ class RedisSettingStore extends AbstractStore
     /**
      * Get a Redis connection by name.
      *
-     * @param  string|null  $name
      * @return \Illuminate\Redis\Connections\Connection
      */
-    private function connection($name = null)
+    private function connection()
     {
-        return $this->manager->connection($name);
+        return $this->redis->connection($this->connection);
     }
 
     /**
