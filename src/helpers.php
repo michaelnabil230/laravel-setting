@@ -6,21 +6,19 @@ if (! function_exists('setting')) {
      *
      * @param  array|string|null  $key
      * @param  mixed  $default
-     * @return \MichaelNabil230\Setting\Stores\AbstractStore
+     * @return \MichaelNabil230\Setting\Stores\SettingStore
      */
     function setting($key = null, $default = null)
     {
-        /** @var \MichaelNabil230\Setting\SettingManager $instants */
-        $instants = app('setting');
-
-        if (is_null($key)) {
-            return $instants;
-        }
+        /** @var \MichaelNabil230\Setting\Stores\SettingStore $instants */
+        $instants = app(\MichaelNabil230\Setting\SettingManager::class);
 
         if (is_array($key)) {
-            return $instants->set($key);
+            $instants->set($key);
+        } elseif (! is_null($key)) {
+            return $instants->get($key, $default);
         }
 
-        return $instants->get($key, $default);
+        return $instants;
     }
 }

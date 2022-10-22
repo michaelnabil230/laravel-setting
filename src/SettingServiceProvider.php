@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Blade;
 use MichaelNabil230\Setting\Commands\ForgetSetting;
 use MichaelNabil230\Setting\Commands\GetSetting;
 use MichaelNabil230\Setting\Commands\SetOrUpdateSetting;
+use MichaelNabil230\Setting\Stores\SettingStore;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -33,13 +34,11 @@ class SettingServiceProvider extends PackageServiceProvider implements Deferrabl
             ]);
     }
 
-    public function packageRegistered()
+    public function registeringPackage()
     {
-        $this->app->singleton('setting', function ($app) {
-            return new SettingManager($app);
-        });
+        $this->app->singleton(SettingManager::class);
 
-        $this->app->extend('setting', function (SettingManager $manager, $app) {
+        $this->app->extend(SettingManager::class, function (SettingManager $manager, $app) {
             foreach ($app['config']->get('setting.drivers', []) as $driver => $params) {
                 $manager->register($driver, $params);
             }
@@ -47,8 +46,8 @@ class SettingServiceProvider extends PackageServiceProvider implements Deferrabl
             return $manager;
         });
 
-        $this->app->singleton('setting.driver', function ($app) {
-            return $app['setting']->driver();
+        $this->app->singleton(SettingStore::class, function ($app) {
+            return $app[SettingManager::class]->driver();
         });
     }
 
@@ -62,8 +61,8 @@ class SettingServiceProvider extends PackageServiceProvider implements Deferrabl
     public function provides(): array
     {
         return [
-            'setting',
-            'setting.driver',
+            SettingManager::class,
+            SettingStore::class,
         ];
     }
 }

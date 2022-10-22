@@ -6,7 +6,7 @@ use Illuminate\Cache\CacheManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
-class DatabaseSettingStore extends AbstractStore
+class DatabaseSettingStore extends SettingStore
 {
     /** @var string */
     public static $cacheKey = 'setting.cache';

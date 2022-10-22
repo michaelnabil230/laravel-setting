@@ -6,7 +6,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Arr;
 use MichaelNabil230\Setting\Interfaces\Store;
 
-abstract class AbstractStore implements Store
+abstract class SettingStore implements Store
 {
     /**
      * The laravel application instance.
@@ -23,7 +23,7 @@ abstract class AbstractStore implements Store
     protected $data = [];
 
     /**
-     * AbstractStore constructor.
+     * SettingStore constructor.
      *
      * @param  Application  $app
      * @param  array  $options
@@ -181,4 +181,15 @@ abstract class AbstractStore implements Store
      * @return bool
      */
     abstract public function forgetAll(): bool;
+
+    /**
+     * Set extra columns to be added to the rows.
+     *
+     * @param  array  $columns
+     * @return $this
+     */
+    public function setExtraColumns(array $columns)
+    {
+        return $this;
+    }
 }

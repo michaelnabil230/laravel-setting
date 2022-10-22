@@ -99,4 +99,12 @@ interface Store
      * @return bool
      */
     public function forgetAll();
+
+    /**
+     * Set extra columns to be added to the rows.
+     *
+     * @param  array  $columns
+     * @return $this
+     */
+    public function setExtraColumns(array $columns);
 }

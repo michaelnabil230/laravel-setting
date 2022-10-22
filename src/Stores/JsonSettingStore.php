@@ -7,7 +7,7 @@ use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use RuntimeException;
 
-class JsonSettingStore extends AbstractStore
+class JsonSettingStore extends SettingStore
 {
     /**
      * The path.

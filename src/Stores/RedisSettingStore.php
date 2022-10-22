@@ -4,7 +4,7 @@ namespace MichaelNabil230\Setting\Stores;
 
 use Illuminate\Support\Arr;
 
-class RedisSettingStore extends AbstractStore
+class RedisSettingStore extends SettingStore
 {
     /**
      * The Redis instance.

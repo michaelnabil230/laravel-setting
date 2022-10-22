@@ -5,9 +5,6 @@ namespace MichaelNabil230\Setting;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Manager;
 
-/**
- * @mixin \MichaelNabil230\Setting\Interfaces\Store
- */
 class SettingManager extends Manager
 {
     /**
@@ -25,7 +22,7 @@ class SettingManager extends Manager
      *
      * @param  string  $driver
      * @param  array  $params
-     * @return $this
+     * @return self
      */
     public function register(string $driver, array $params)
     {

@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Facade;
  * @method disable()
  * @method forget($key)
  * @method forgetAll()
+ * @method setExtraColumns($columns)
  *
- * @see \MichaelNabil230\Setting\SettingManager
+ * @see \MichaelNabil230\Setting\Stores\SettingStore
  */
 class Setting extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'setting';
+        return \MichaelNabil230\Setting\SettingManager::class;
     }
 }
