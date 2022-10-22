@@ -25,8 +25,8 @@
     ],
     "require": {
         "php": "^8.0",
-        "spatie/laravel-package-tools": "^1.13.6",
-        "illuminate/contracts": "^8.73|^9.0"
+        "illuminate/contracts": "^8.73|^9.0",
+        "spatie/laravel-package-tools": "1.11.0"
     },
     "require-dev": {
         "laravel/pint": "^1.0",

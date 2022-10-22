@@ -28,12 +28,6 @@ You can publish the config file with:
 php artisan vendor:publish --tag="setting-config"
 ```
 
-You can publish all files and run the migrations with:
-
-```bash
-php artisan setting:install
-```
-
 This is the contents of the published config file:
 
 ```php
@@ -65,7 +59,7 @@ return [
 
     'drivers' => [
         'database' => [
-            'driver' => MichaelNabil230\Setting\Stores\DatabaseSettingStore::class,
+            'driver' => \MichaelNabil230\Setting\Stores\DatabaseSettingStore::class,
             'options' => [
                 'model' => Setting::class,
                 'table' => 'settings', // name of table in dataBase
@@ -85,7 +79,7 @@ return [
         ],
 
         'json' => [
-            'driver' => MichaelNabil230\Setting\Stores\JsonSettingStore::class,
+            'driver' => \MichaelNabil230\Setting\Stores\JsonSettingStore::class,
             'options' => [
                 'path' => storage_path('settings.json'),
             ]
@@ -274,7 +268,7 @@ return [
     
     'drivers' => [
         'database' => [
-            'driver' => MichaelNabil230\Setting\Stores\DatabaseSettingStore::class,
+            'driver' => \MichaelNabil230\Setting\Stores\DatabaseSettingStore::class,
             'options' => [
                 'model' => Setting::class,
                 'table' => 'settings', // name of table in dataBase
@@ -294,7 +288,7 @@ return [
         ],
 
         'json' => [
-            'driver' => MichaelNabil230\Setting\Stores\JsonSettingStore::class,
+            'driver' => \MichaelNabil230\Setting\Stores\JsonSettingStore::class,
             'options' => [
                 'path' => storage_path('settings.json'),
             ]
