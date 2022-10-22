@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Blade;
 use MichaelNabil230\Setting\Commands\ForgetSetting;
 use MichaelNabil230\Setting\Commands\GetSetting;
 use MichaelNabil230\Setting\Commands\SetOrUpdateSetting;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -18,6 +19,13 @@ class SettingServiceProvider extends PackageServiceProvider implements Deferrabl
             ->name('setting')
             ->hasConfigFile()
             ->hasMigration('create_settings_table')
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->publishMigrations()
+                    ->askToRunMigrations()
+                    ->askToStarRepoOnGitHub('michaelnabil230/laravel-setting');
+            })
             ->hasCommands([
                 GetSetting::class,
                 ForgetSetting::class,

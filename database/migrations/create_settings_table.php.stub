@@ -4,11 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration 
+return new class extends Migration
 {
+    /**
+     * The name of table.
+     *
+     * @var string
+     */
+    protected string $table;
+
+    /**
+     * Migration constructor.
+     */
     public function __construct()
     {
-        $this->table = config('setting.drivers.database.options.table');
+        $this->table = config('setting.drivers.database.options.table', 'settings');
     }
 
     /**

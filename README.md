@@ -28,6 +28,12 @@ You can publish the config file with:
 php artisan vendor:publish --tag="setting-config"
 ```
 
+You can publish all files and run the migrations with:
+
+```bash
+php artisan setting:install
+```
+
 This is the contents of the published config file:
 
 ```php
@@ -71,14 +77,10 @@ return [
         ],
 
         'redis' => [
-            'driver'  => MichaelNabil230\Setting\Stores\RedisSettingStore::class,
+            'driver' => \MichaelNabil230\Setting\Stores\RedisSettingStore::class,
             'options' => [
-                'client' => 'predis',
-                'default' => [
-                    'host' => env('REDIS_HOST', '127.0.0.1'),
-                    'port' => env('REDIS_PORT', 6379),
-                    'database' => env('REDIS_DB', 0),
-                ],
+                'connection' => 'default',
+                'prefix' => 'setting',
             ],
         ],
 
@@ -233,8 +235,6 @@ Reading will come from the store, and then from the cache, this can reduce load 
 ```php
 <?php
 
-// config/setting.php
-
 return [
     /*
     |--------------------------------------------------------------------------
@@ -259,8 +259,6 @@ You can specify here your default store driver that you would to use.
 
 ```php
 <?php
-
-// config/setting.php
 
 return [
     //...
@@ -288,14 +286,10 @@ return [
         ],
 
         'redis' => [
-            'driver'  => MichaelNabil230\Setting\Stores\RedisSettingStore::class,
+            'driver' => \MichaelNabil230\Setting\Stores\RedisSettingStore::class,
             'options' => [
-                'client' => 'predis',
-                'default' => [
-                    'host' => env('REDIS_HOST', '127.0.0.1'),
-                    'port' => env('REDIS_PORT', 6379),
-                    'database' => env('REDIS_DB', 0),
-                ],
+                'connection' => 'default',
+                'prefix' => 'setting',
             ],
         ],
 
