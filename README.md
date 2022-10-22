@@ -321,7 +321,7 @@ The store config is structured like this:
 
 namespace App\Settings;
 
-use MichaelNabil230\Setting\Contracts\Store;
+use MichaelNabil230\Setting\Stores\SettingStore as Store;
 
 class CustomStore implements Store
 {
