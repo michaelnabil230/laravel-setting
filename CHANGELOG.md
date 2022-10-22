@@ -2,6 +2,20 @@
 
 All notable changes to `setting` will be documented in this file.
 
+## v1.2.6 - 2022-10-22
+
+### What's Changed
+
+- Bump aglipanci/laravel-pint-action from 0.1.0 to 1.0.0 by @dependabot in https://github.com/michaelnabil230/laravel-setting/pull/7
+- Bump dependabot/fetch-metadata from 1.3.3 to 1.3.4 by @dependabot in https://github.com/michaelnabil230/laravel-setting/pull/8
+- Format workflow
+- Rename file `AbstractStore` to `SettingStore`
+- Added method `setExtraColumns` in `SettingStore`
+- Fix types in the helper setting
+- Some Improvements in `RedisSettingStore`
+
+**Full Changelog**: https://github.com/michaelnabil230/laravel-setting/compare/v1.2.5...v1.2.6
+
 ## v1.2.5 - 2022-07-22
 
 ### Added
