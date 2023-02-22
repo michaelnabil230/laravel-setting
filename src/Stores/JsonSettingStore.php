@@ -23,11 +23,7 @@ class JsonSettingStore extends SettingStore
      */
     protected $files = null;
 
-    /**
-     * @param  array  $options
-     * @return void
-     */
-    public function postOptions($options = []): void
+    public function postOptions(array $options = []): void
     {
         $this->path = $options['path'];
         $this->files = $this->app['files'];
@@ -38,7 +34,6 @@ class JsonSettingStore extends SettingStore
     /**
      * Loaded data from the store.
      *
-     * @return void
      *
      * @throws RuntimeException
      */
@@ -56,9 +51,6 @@ class JsonSettingStore extends SettingStore
 
     /**
      * Write the data into the store.
-     *
-     * @param  array  $data
-     * @return void
      */
     public function write(array $data): void
     {
@@ -69,11 +61,8 @@ class JsonSettingStore extends SettingStore
 
     /**
      * Unset a key in the settings data.
-     *
-     * @param  string  $key
-     * @return bool
      */
-    public function forget($key): bool
+    public function forget(string $key): bool
     {
         $this->loadedData();
 
@@ -90,8 +79,6 @@ class JsonSettingStore extends SettingStore
 
     /**
      * Unset all keys in the settings data.
-     *
-     * @return bool
      */
     public function forgetAll(): bool
     {
@@ -105,7 +92,6 @@ class JsonSettingStore extends SettingStore
     /**
      * Throw any Exception first.
      *
-     * @return void
      *
      * @throws InvalidArgumentException
      */

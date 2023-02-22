@@ -55,11 +55,8 @@ class DatabaseSettingStore extends SettingStore
 
     /**
      * SettingStore constructor.
-     *
-     * @param  array  $options
-     * @return void
      */
-    public function postOptions($options = []): void
+    public function postOptions(array $options = []): void
     {
         $this->model = $options['model'];
         $this->cache = $this->app['cache'];
@@ -69,9 +66,6 @@ class DatabaseSettingStore extends SettingStore
 
     /**
      * Write the data into the store.
-     *
-     * @param  array  $data
-     * @return void
      */
     public function write(array $data): void
     {
@@ -90,8 +84,6 @@ class DatabaseSettingStore extends SettingStore
 
     /**
      * Loaded data from the store.
-     *
-     * @return void
      */
     public function loadedData(): void
     {
@@ -108,11 +100,8 @@ class DatabaseSettingStore extends SettingStore
 
     /**
      * Unset a key in the settings data.
-     *
-     * @param  string  $key
-     * @return bool
      */
-    public function forget($key): bool
+    public function forget(string $key): bool
     {
         $this->loadedData();
 
@@ -133,8 +122,6 @@ class DatabaseSettingStore extends SettingStore
 
     /**
      * Unset all keys in the settings data.
-     *
-     * @return bool
      */
     public function forgetAll(): bool
     {
@@ -148,7 +135,6 @@ class DatabaseSettingStore extends SettingStore
     /**
      * Set extra columns to be added to the rows.
      *
-     * @param  array  $columns
      * @return $this
      */
     public function setExtraColumns(array $columns): self
@@ -160,9 +146,6 @@ class DatabaseSettingStore extends SettingStore
 
     /**
      * Sync the deleted records.
-     *
-     * @param  array  $deleted
-     * @return void
      */
     private function syncDeleted(array $deleted): void
     {
@@ -173,8 +156,6 @@ class DatabaseSettingStore extends SettingStore
 
     /**
      * Read the original data from dataBase.
-     *
-     * @return array
      */
     private function readOriginalData(): array
     {
@@ -183,9 +164,6 @@ class DatabaseSettingStore extends SettingStore
 
     /**
      * Get the changed settings data.
-     *
-     * @param  array  $data
-     * @return array
      */
     private function getChanges(array $data): array
     {
@@ -207,9 +185,6 @@ class DatabaseSettingStore extends SettingStore
     /**
      * Transforms settings data into an array ready to be inserted into the database.
      * Call array_dot on a multidimensional array before passing it into this method!
-     *
-     * @param  array  $data
-     * @return array
      */
     private function prepareData(array $data): array
     {

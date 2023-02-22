@@ -20,8 +20,6 @@ class SettingManager extends Manager
     /**
      * Register a new store.
      *
-     * @param  string  $driver
-     * @param  array  $params
      * @return self
      */
     public function register(string $driver, array $params)

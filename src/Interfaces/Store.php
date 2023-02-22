@@ -15,8 +15,6 @@ interface Store
 
     /**
      * Loaded data from the store.
-     *
-     * @return void
      */
     public function loadedData(): void;
 
@@ -32,10 +30,9 @@ interface Store
     /**
      * Determine if a key exists in the settings data.
      *
-     * @param  string  $key
      * @return bool
      */
-    public function has($key);
+    public function has(string $key);
 
     /**
      * Save any changes done to the settings data.
@@ -47,7 +44,6 @@ interface Store
     /**
      * Write the data into the store.
      *
-     * @param  array  $data
      * @return void
      */
     public function write(array $data);
@@ -64,34 +60,30 @@ interface Store
      *
      * This method exists for convenience.
      *
-     * @param  mixed  $key
      * @return $this
      */
-    public function flip($key);
+    public function flip(mixed $key);
 
     /**
      * Sets the specified key to true.
      *
-     * @param  mixed  $key
      * @return $this
      */
-    public function enable($key);
+    public function enable(mixed $key);
 
     /**
      * Sets the specified key to false.
      *
-     * @param  mixed  $key
      * @return $this
      */
-    public function disable($key);
+    public function disable(mixed $key);
 
     /**
      * Unset a key in the settings data.
      *
-     * @param  string  $key
      * @return bool
      */
-    public function forget($key);
+    public function forget(string $key);
 
     /**
      * Unset all keys in the settings data.
@@ -103,7 +95,6 @@ interface Store
     /**
      * Set extra columns to be added to the rows.
      *
-     * @param  array  $columns
      * @return $this
      */
     public function setExtraColumns(array $columns);
