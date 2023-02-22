@@ -2,6 +2,7 @@
 
 namespace MichaelNabil230\Setting\Stores;
 
+use Illuminate\Redis\Connections\Connection;
 use Illuminate\Support\Arr;
 
 class RedisSettingStore extends SettingStore
@@ -27,10 +28,6 @@ class RedisSettingStore extends SettingStore
      */
     protected $connection = null;
 
-    /**
-     * @param  array  $options
-     * @return void
-     */
     protected function postOptions(array $options): void
     {
         $this->redis = $this->app->make('redis');
@@ -40,8 +37,6 @@ class RedisSettingStore extends SettingStore
 
     /**
      * Loaded data from the store.
-     *
-     * @return void
      */
     public function loadedData(): void
     {
@@ -52,9 +47,6 @@ class RedisSettingStore extends SettingStore
 
     /**
      * Write the data into the store.
-     *
-     * @param  array  $data
-     * @return void
      */
     public function write(array $data): void
     {
@@ -63,11 +55,8 @@ class RedisSettingStore extends SettingStore
 
     /**
      * Unset a key in the settings data.
-     *
-     * @param  string  $key
-     * @return bool
      */
-    public function forget($key): bool
+    public function forget(string $key): bool
     {
         $this->loadedData();
 
@@ -84,8 +73,6 @@ class RedisSettingStore extends SettingStore
 
     /**
      * Unset all keys in the settings data.
-     *
-     * @return bool
      */
     public function forgetAll(): bool
     {
@@ -96,22 +83,16 @@ class RedisSettingStore extends SettingStore
 
     /**
      * Get a Redis connection by name.
-     *
-     * @return \Illuminate\Redis\Connections\Connection
      */
-    private function connection()
+    private function connection(): Connection
     {
         return $this->redis->connection($this->connection);
     }
 
     /**
      * Run a command against the Redis database.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
-     * @return mixed
      */
-    private function command(string $method, array $parameters = [])
+    private function command(string $method, array $parameters = []): mixed
     {
         return $this->connection()->command($method, $parameters);
     }
