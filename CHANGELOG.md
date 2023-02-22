@@ -2,6 +2,21 @@
 
 All notable changes to `setting` will be documented in this file.
 
+## v2.0.0 - 2023-02-22
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/michaelnabil230/laravel-setting/pull/9
+- Bump ramsey/composer-install from 1 to 2 by @dependabot in https://github.com/michaelnabil230/laravel-setting/pull/10
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/michaelnabil230/laravel-setting/pull/12
+- Upgrade package by @michaelnabil230 in https://github.com/michaelnabil230/laravel-setting/pull/13
+
+### New Contributors
+
+- @michaelnabil230 made their first contribution in https://github.com/michaelnabil230/laravel-setting/pull/13
+
+**Full Changelog**: https://github.com/michaelnabil230/laravel-setting/compare/v1.2.6...v2.0.0
+
 ## v1.2.6 - 2022-10-22
 
 ### What's Changed
